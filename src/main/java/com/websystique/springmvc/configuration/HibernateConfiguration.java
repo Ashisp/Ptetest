@@ -1,5 +1,6 @@
 package com.websystique.springmvc.configuration;
 
+import com.fasterxml.classmate.AnnotationConfiguration;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -21,13 +22,17 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan({ "com.websystique.springmvc.configuration" })
 @PropertySource(value = { "classpath:application.properties" })
 public class HibernateConfiguration {
+    
 
     @Autowired
     private Environment environment;
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
+       
+        
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+        
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan(new String[] { "com.websystique.springmvc.model" });
         sessionFactory.setHibernateProperties(hibernateProperties());

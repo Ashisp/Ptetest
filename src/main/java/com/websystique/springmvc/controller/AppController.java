@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.websystique.springmvc.model.FileBucket;
-import com.websystique.springmvc.model.Questions;
+
 import com.websystique.springmvc.model.User;
 import com.websystique.springmvc.model.UserDocument;
-import com.websystique.springmvc.service.QuestionService;
+
 
 import com.websystique.springmvc.service.UserAuthenticateService;
 import com.websystique.springmvc.service.UserDocumentService;
@@ -43,8 +43,7 @@ public class AppController {
 	@Autowired
 	UserService userService;
         
-        @Autowired
-        QuestionService questionService;
+       
         
 	@Autowired
         private UserAuthenticateService userAuthenticateService;
@@ -88,14 +87,7 @@ public class AppController {
 		return "registration";
 	}
         
-     @RequestMapping(value = {"/questions" }, method = RequestMethod.GET)
-	public String questions(ModelMap model) {
-
-		List<Questions> users = questionService.findAllQuestions();
-		model.addAttribute("questions", users);
-		return "multiplechoicesingleans";
-                
-	}
+  
         
         
         	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
